@@ -39,8 +39,13 @@
 			_.ul = el.find(_.o.items);
 			_.max = [el.outerWidth() | 0, el.outerHeight() | 0];
 			_.li = _.ul.find(_.o.item).each(function(index) {
-				var me = $(this),
-					width = me.outerWidth(),
+				var me = $(this);
+				
+				// All slides should have been hidden in CSS to avoid page reflows when Unslider kicks in.
+				// Show then now so we can get the correct dimensions
+				me.show(); 
+				
+				var width = me.outerWidth(),
 					height = me.outerHeight();
 
 				//  Set the max values
